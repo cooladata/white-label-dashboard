@@ -1,3 +1,17 @@
+<?php
+/*
+White-Label Dashboard Version: 0.0.1
+By Cooladata
+Developed by Gil Adirim, Snir Shalev
+Copyright (c) 2015
+
+UserFrosting Version: 0.2.2
+By Alex Weissman
+Copyright (c) 2014
+
+Based on the UserCake user management system, v2.0.2.
+Copyright (c) 2009-2012
+
 UserFrosting, like UserCake, is 100% free and open-source.
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -16,3 +30,30 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
+
+*/
+
+require_once("../models/config.php");
+
+set_error_handler('logAllErrors');
+
+// Request method: GET
+$ajax = checkRequestMode("get");
+
+// User must be logged in
+checkLoggedInUser($ajax);
+
+$languages = getLanguageFiles(); //Retrieve list of language files
+
+//Retrieve settings
+if (!($result = loadSiteSettings())){
+	apiReturnError($ajax, getReferralPage());
+}
+
+$result['language_options'] = $languages;
+
+restore_error_handler();
+
+echo json_encode($result, JSON_FORCE_OBJECT);
+
+?>

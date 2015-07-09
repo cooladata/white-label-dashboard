@@ -1,3 +1,5 @@
+.idea
 *.komodoproject
-.DS_Store
-_meta/*
+
+
+models/.DS_Store

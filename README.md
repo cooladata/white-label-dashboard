@@ -1,108 +1,125 @@
-# UserFrosting v0.3.0
 
-http://www.userfrosting.com
+# UserFrosting 0.2.2
+## http://www.userfrosting.com
 
-[![Join the chat at https://gitter.im/alexweissman/UserFrosting](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/alexweissman/UserFrosting?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+### By Alex Weissman
 
-[![Click here to lend your support to: UserFrosting: A secure, modern user management system for PHP and make a donation at pledgie.com !](https://pledgie.com/campaigns/29583.png?skin_name=chrome)](https://pledgie.com/campaigns/29583)
+Copyright (c) 2014
 
-## By [Alex Weissman](http://alexanderweissman.com)
-
-Copyright (c) 2015, free to use in personal and commercial software as per the [license](licenses/UserFrosting.md).
-
-UserFrosting is a secure, modern user management system written in PHP and built on top of the [Slim Microframework](http://www.slimframework.com/) and the [Twig](http://twig.sensiolabs.org/) templating engine.
-
-## Screenshots
-
+Welcome to UserFrosting, a secure, modern user management system for web services and applications.  UserFrosting is based on the popular UserCake system, written in PHP.  UserFrosting improves on this system by adding fine-grained authorization rules and a sleek, intuitive frontend interface based on HTML5 and Twitter Bootstrap.  We've also separated the backend PHP machinery that interacts with the database from the frontend code base.  The frontend and backend talk to each other via AJAX and JSON.
+        
+Screenshots
+-----------------
 #### Login page
 ![Login page](/screenshots/login.png "Login page")
-#### Dashboard (thanks to [Start Bootstrap](http://startbootstrap.com))
+#### Admin dashboard (thanks to [Start Bootstrap](http://startbootstrap.com))
 ![Admin dashboard](/screenshots/dashboard.png "Admin dashboard")
 #### User list page
 ![User list](/screenshots/users.png "User list page")
 #### Create/update user dialog with validation
 ![Create/update user user](/screenshots/update_user.png "Create/update user dialog")
+#### User details
+![User details](/screenshots/user_details.png "User details page")
 #### Group management
 ![Group management](/screenshots/groups.png "Group management page")
 #### Site settings
 ![Site settings](/screenshots/site_settings.png "Site settings page")
+#### Action authorization
+![Action authorization](/screenshots/action_auth.png "Action authorization")
+#### Page authorization
+![Page authorization](/screenshots/page_auth.png "Page authorization")
 
-## Mission Objectives
+Why UserFrosting?
+-----------------
+This project grew out of a need for a simple user management system for my tutoring business, [Bloomington Tutors](http://bloomingtontutors.com).  I wanted something that I could develop rapidly and easily customize for the needs of my business.  Since my [prior web development experience](http://alexanderweissman.com/completed-projects/) was in pure PHP, I decided to go with the PHP-based UserCake system.  Over time I modified and expanded the codebase, turning it into the UserFrosting project. 
 
-UserFrosting seeks to balance modern programming principles, like DRY and MVC, with a shallow learning curve for new developers.  Our goals are to:
+Why not use Node/Drupal/Django/RoR/(insert favorite framework here)?
+--------------------------------------------------------------------
+I chose PHP because PHP is what I know from my prior experience as a web developer. Additionally, PHP remains extremely popular and well-supported.  I chose not to use a framework because I wanted something that I could understand easily and develop rapidly from an existing PHP codebase.
 
-- Create a fully-functioning user management script that can be set up in just a few minutes
-- Make it easy for users to quickly adapt the code for their needs
-- Introduce novice developers to best practices such as separation of concerns and DRY programming
-- Introduce novice developers to modern constructs such as front-end controllers, RESTful URLs, namespacing, and object-oriented modeling
-- Build on existing, widely used server- and client-side components
-- Clean, consistent, and well-documented code
+Developer Features
+------------------
+- No need to learn a special framework!  The backend of UserFrosting is based on native PHP5, allowing for rapid development and deployment.
+- Clean separation of backend and frontend code.  Easily interact with the backend via [AJAX calls](http://www.userfrosting.com/backend-api.html).
+- Automated installation tool for initializing the database.
+- Frontend built with jQuery and Twitter Bootstrap.  Javascript components for typical database CRUD operations provided with this distribution!
 
-## Installation
+User Features
+-------------
+UserFrosting offers all of the features of UserCake, plus several new ones:
 
-Please see our [installation guide](http://www.userfrosting.com/installation/).
+- Fine-grained, [rule-based authorization](http://www.userfrosting.com/features.html#authorization) for different users and groups.  Use our preloaded rules, or write your own and assign them to users and groups with our easy-to-use interface.
+- Account creation/deletion from the admin interface
+- Admin can disable/enable individual accounts
+- Admin can disable/enable new account registration
+- Admin can enable/disable logging in with email address
+- Dropdown menus for easier account modifications
+- Client-side [data validation](http://www.userfrosting.com/features.html#validation)
+- Primary group for each user.  Primary group can be used to determine authorization, site rendering, custom menus, etc.
+- Default groups for new accounts
+- Table view for easily editing page authorization.
+- New, more secure "lost password" feature.
 
-## What's new in 0.3.0
+Security Features
+-----------------
+UserFrosting is designed to address the most common security issues with websites that handle sensitive user data:
 
-### Autoloading with Composer
+- SSL/HTTPS compatibility
+- Strong password hashing
+- Protection against cross-site request forgery (CSRF)
+- Protection against cross-site scripting (XSS)
+- Protection against SQL injection
 
-http://www.userfrosting.com/navigating/#composer
+See the [security](http://www.userfrosting.com/security.html) section of our website for more details.
 
-### Front Controllers and the Slim Microframework
+Language Support
+----------------
+Database and data-handling functions are compliant with UTF8 character set.
 
-http://www.userfrosting.com/navigating/#slim
+#### Current languages offered:
 
-### MVC Architecture
+- English
+- Internationalized Spanish
 
-http://www.userfrosting.com/navigating/#structure
+Installation
+--------------
 
-### Templating with Twig
+UserFrosting comes with an easy-to-use installer.  Simply download the code to a directory on your server, and navigate to the <code>/install</code> subdirectory.  UserFrosting will guide you through setting up the database, configuring settings, and creating the master account.
 
-http://www.userfrosting.com/navigating/#twig
+Change Log - v0.2.2 
+-------------------
 
-### Theming
+- Implemented upgrade system, will pull new version list from github and automatically grab update files as well.
+- Moved file list from config.php to the database to be easier to add and remove file paths
+- Added version to the configuration table to aid in the upgrading of Userfrosting
+- Added dev_env to config.php as well as new setting to db-setting.php when set to true UF will no longer check for the install or upgrade directory (good for development defaults to FALSE)
+- Removal of models/captcha.php and replace with base64 captcha function.
 
-http://www.userfrosting.com/components/#theming
+[Older changes](CHANGELOG.md)   
 
-### Plugins
+Creds
+-----
 
-http://www.userfrosting.com/components/#plugins
+Thanks to user @r3wt for help with the CSRF and improved hashing, and @lilfade for significant contributions in getting `butterflyknife` ready and tested for release.
 
-## Libraries
+Thanks to @arochwer for translating system messages into internationalized Spanish!
 
-- URL Routing and micro-framework: [Slim](http://www.slimframework.com/)
-- Templating: [Twig](http://twig.sensiolabs.org/)
+The back end account management system is derived from [UserCake 2.0.2](http://usercake.com), while the dashboard and admin account features are based on the SB Admin Template by [Start Bootstrap](http://startbootstrap.com). Other key frameworks and plugins used in this system are:
 
-## Why UserFrosting?
+*  jQuery 1.10.2
+*  Twitter Bootstrap 3.0
+*  [Font Awesome](http://fontawesome.io)
+*  [Handlebars templating](http://handlebarsjs.com/)
+*  [Tablesorter 2.17.7](http://tablesorter.com)
+*  [Typeahead addon for Bootstrap](https://github.com/twitter/typeahead.js)
+*  [DateJS](http://www.datejs.com)
+*  [Bootstrap Switch](http://bootstrap-switch.org) 
+*  [Bootsole PHP templating](https://github.com/alexweissman/bootsole)
 
-This project grew out of a need for a simple user management system for my tutoring business, [Bloomington Tutors](http://bloomingtontutors.com).  I wanted something that I could develop rapidly and easily customize for the needs of my business.  Since my [prior web development experience](http://alexanderweissman.com/projects/) was in pure PHP, I decided to go with the PHP-based UserCake system.
+All components are copyright of their respective creators.
 
-Over time I modified and expanded the codebase, turning it into the UserFrosting project.  This latest version (0.3.0) represents a major break from the original architecture of UserCake.  We now use a fully object-oriented data model and a front controller for URL routing.
+Upcoming Features
+-----------------
 
-## TODO
+Please see the [wiki](https://github.com/alexweissman/UserFrosting/wiki/Upcoming-features) for a list of potential upcoming features.  If you would like to see a new feature implemented (or you would like to implement it!) please [open an issue](https://github.com/alexweissman/UserFrosting/issues?direction=desc&sort=updated&state=open).
 
-### Persistent sessions
-
-UserFrosting uses native PHP sessions.  We could use Slim's [encrypted session cookies](http://docs.slimframework.com/#Cookie-Session-Store), but unfortunately they only allow a max of 4KB of data - too little for what a typical use case will require.
-
-Many UF developers suffer from PHP's native sessions randomly expiring.  This may be an issue related to server configuration, rather than a problem with UF itself.  More research is needed.
-http://board.phpbuilder.com/showthread.php?10313632-Sessions-randomly-dropped!
-https://stackoverflow.com/questions/1327351/session-should-never-expire-by-itself
-http://jaspan.com/improved_persistent_login_cookie_best_practice
-
-It could also be due to issues with other PHP applications running on the same server: https://stackoverflow.com/questions/3476538/php-sessions-timing-out-too-quickly
-
-### Remove input sanitization
-
-Sanitization should probably happen when data is used (i.e. displayed), rather than when input.  See http://lukeplant.me.uk/blog/posts/why-escape-on-input-is-a-bad-idea/.
-So, it should go something like:
-raw input -> validation -> database -> sanitization -> output
-
-### Modifying permissions
- 
-We need a better interface for modifying permissions:
-https://github.com/alexweissman/UserFrosting/issues/127
- 
-### Plugins
-
-We need a plugin system that is easily extendable, and exposes the Slim `$app` instance to the plugin developer.  It should also allow the developer to modify the user's environment.

@@ -1,0 +1,100 @@
+body {
+	background-image: url("../images/coola-ui-bg.jpg")
+}
+.widget{
+	float:left;
+	padding-left:15px;
+	clear:both; 
+	margin-top:20px;
+}
+.loader {
+	display: table;
+	margin: auto; 
+	position: fixed;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+}
+.button {
+	background: #113344;
+	color: white;
+	text-shadow: none;
+}
+ul, ol {
+	list-style: none;
+}
+.widget-size{
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	border: 0;
+	-webkit-box-shadow: none;
+	-moz-box-shadow: none;
+	box-shadow: none;
+}
+.widget-header {
+	padding-left: 13px;
+	font-size:22px;
+	font-family: 'Roboto Condensed',sans-serif;
+	color: #113344;
+}
+.block-widget-outer {
+	width: 400px;
+	height: 200px;
+	padding-top: 20px;
+	margin-top: 20px;
+}
+.block-widget-inner-top {
+	height: 70px;
+}
+.block-widget-inner-top.green {
+	background-color: #6DB400;
+}
+.block-widget-inner-top.red {
+	background-color: #C3022A;
+}
+.block-widget-inner-top.blue {
+	background-color: #008EC3;
+}
+.block-widget-inner-top.purple {
+	background-color: #A70195;
+}
+.block-widget-inner-bottom {
+	height: 130px;
+	color: white;
+	font-weight: 400;
+	font-size: 20px;
+	font-family: 'Arial';
+}
+.block-widget-inner-bottom.green {
+	background-color: #79C800;
+}
+.block-widget-inner-bottom.red {
+	background-color: #D9022F;
+}
+.block-widget-inner-bottom.blue {
+	background-color: #009ED9;
+}
+.block-widget-inner-bottom.purple {
+	background-color: #BA01A6;
+}
+.block-widget-title {
+	color: white;
+	font-weight: 400;
+	font-size: 28px;
+	font-family: 'Arial';
+	padding-left: 20px;
+	margin-top: 20px;
+	position: absolute;
+}
+.block-widget-value {
+	color: white;
+	font-weight: 400;
+	font-size: 38px;
+	font-family: 'Arial';
+	text-align: center;
+	vertical-align: middle;
+	line-height: 140px;
+	display: block;
+}

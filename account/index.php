@@ -1,3 +1,17 @@
+<?php
+/*
+White-Label Dashboard Version: 0.0.1
+By Cooladata
+Developed by Gil Adirim, Snir Shalev
+Copyright (c) 2015
+
+UserFrosting Version: 0.2.2
+By Alex Weissman
+Copyright (c) 2014
+
+Based on the UserCake user management system, v2.0.2.
+Copyright (c) 2009-2012
+
 UserFrosting, like UserCake, is 100% free and open-source.
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -16,3 +30,26 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
+
+*/
+
+require_once("../models/config.php");
+
+// Request method: GET
+$ajax = checkRequestMode("get");
+
+// User must be logged in
+if (!isUserLoggedIn()){
+  addAlert("danger", lang("LOGIN_REQUIRED"));
+  apiReturnError($ajax, SITE_ROOT . "login.php");
+}
+
+setReferralPage(getAbsoluteDocumentPath(__FILE__));
+
+// Automatically forward to the user's default home page
+$home_page = SITE_ROOT . fetchUserHomePage($loggedInUser->user_id);
+
+header( "Location: $home_page" ) ;
+exit();
+
+?>
